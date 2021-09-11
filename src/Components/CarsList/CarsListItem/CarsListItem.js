@@ -1,8 +1,8 @@
 import Button from '../../Button/Button';
 
-const CarsListItem = ({ carsDetails }) => (
+const CarsListItem = ({ carsDetails: { make, model, year, id }, deleteCar }) => (
   <li>
-    {carsDetails.make} {carsDetails.model} - {carsDetails.year} <Button buttonType="edit" /> <Button buttonType="del" />
+    {make} {model} - {year} <Button buttonType="edit" /> <Button onClick={() => deleteCar(id)} buttonType="del" />
   </li>
 );
 
