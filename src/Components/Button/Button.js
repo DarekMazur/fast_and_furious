@@ -1,3 +1,3 @@
-const Button = ({ buttonType }) => <button>{buttonType}</button>;
+const Button = (props) => <button {...props}>{props.buttonType}</button>;
 
 export default Button;
