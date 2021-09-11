@@ -1,9 +1,10 @@
-import CarsList from '../Components/CarsList/CarsList';
+import CarsList from '../Components/organisms/CarsList/CarsList';
+import Footer from '../Components/organisms/Footer/Footer';
 
 const Root = () => (
   <>
-    <p>Hello world</p>
     <CarsList />
+    <Footer />
   </>
 );
 

@@ -1,4 +1,4 @@
-import Button from '../../Button/Button';
+import Button from '../../atoms/Button/Button';
 
 const CarsListItem = ({ carsDetails: { make, model, year, id }, deleteCar }) => (
   <li>

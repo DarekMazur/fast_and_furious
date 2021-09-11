@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { carsArray as carsData } from '../../assets/data/cars';
-import Button from '../Button/Button';
-import CarsListItem from './CarsListItem/CarsListItem';
+import { carsArray as carsData } from '../../../utils/data/cars';
+import Button from '../../atoms/Button/Button';
+import CarsListItem from '../../molecules/CarsListItem/CarsListItem';
 
 const CarsList = () => {
   const mockAPI = (success) => {
