@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { carsArray as carsData } from '../../../utils/data/cars';
-import Button from '../../atoms/Button/Button';
+import Button from '../../atoms/IconButton/IconButton';
 import CarsListItem from '../../molecules/CarsListItem/CarsListItem';
 
 const CarsList = () => {
@@ -36,7 +36,7 @@ const CarsList = () => {
 
   return (
     <>
-      <h2>{isLoading ? 'Loading...' : 'Car Lists'}</h2>
+      <h2>{isLoading ? 'Loading...' : null}</h2>
       <ul>
         {/* <li>
           <h3>Mark</h3> <h3>Model</h3> <h3>Year</h3>
