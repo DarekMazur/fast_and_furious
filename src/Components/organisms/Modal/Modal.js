@@ -32,13 +32,19 @@ const Modal = ({ make, model, year }) => {
   return (
     <form onSubmit={handleSubmitCar}>
       <div>
-        <FormField field="make" content={make ? make : null} onChange={handleInputChange} />
-        <FormField field="model" content={model ? model : null} onChange={handleInputChange} />
-        <FormField field="year" content={year ? year : null} onChange={handleInputChange} />
+        <FormField field="make" value={formValues.make} onChange={handleInputChange} />
+        <FormField field="model" value={formValues.model} onChange={handleInputChange} />
+        <FormField field="year" value={formValues.year} onChange={handleInputChange} />
       </div>
       <AddButton />
     </form>
   );
+};
+
+Modal.propTypes = {
+  make: PropTypes.string,
+  model: PropTypes.string,
+  year: PropTypes.number,
 };
 
 export default Modal;
