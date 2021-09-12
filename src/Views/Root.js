@@ -1,11 +1,9 @@
-import CarsList from '../Components/organisms/CarsList/CarsList';
 import MainTemplate from '../Components/templates/MainTemplate/MainTemplate';
-import Modal from '../Components/templates/Modal/Modal';
+import Dashboard from './Dashboard';
 
 const Root = () => (
   <MainTemplate>
-    <CarsList />
-    <Modal />
+    <Dashboard />
   </MainTemplate>
 );
 
