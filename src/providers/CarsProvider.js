@@ -4,7 +4,7 @@ import { carsArray as carsData } from '../utils/data/cars';
 export const CarsContext = React.createContext({
   cars: [],
   isLoading: null,
-  // handleAddCar: () => {},
+  handleAddCar: () => {},
   // handleEditCar: () => {},
   deleteCar: () => {},
 });
@@ -40,12 +40,22 @@ const CarsProvider = ({ children }) => {
     setCars(filterdCars);
   };
 
+  const handleAddCar = (values) => {
+    const newCar = {
+      make: values.make,
+      model: values.model,
+      year: values.year,
+      id: Date.now(),
+    };
+    setCars([newCar, ...cars]);
+  };
+
   return (
     <CarsContext.Provider
       value={{
         cars,
         isLoading,
-        // handleAddCar,
+        handleAddCar,
         // handleEditCar,
         deleteCar,
       }}
