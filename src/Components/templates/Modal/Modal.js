@@ -1,24 +1,12 @@
 import PropTypes from 'prop-types';
 import AddButton from '../../atoms/AddButton/AddButton';
-import Input from '../../atoms/Input/Input';
-import Label from '../../atoms/Label/Label';
+import FormField from '../../molecules/FormField/FromField';
 
 const Modal = ({ make, model, year }) => (
   <form>
-    <Label id="make" label="Mark" />
-    <Input name="make" id="make">
-      {make ? make : ''}
-    </Input>
-
-    <Label id="model" label="Model" />
-    <Input name="model" id="model">
-      {model ? model : ''}
-    </Input>
-
-    <Label id="year" label="Year" />
-    <Input name="year" id="year">
-      {year ? year : ''}
-    </Input>
+    <FormField field="make" content={make ? make : null} />
+    <FormField field="model" content={model ? model : null} />
+    <FormField field="year" content={year ? year : null} />
 
     <AddButton />
   </form>
