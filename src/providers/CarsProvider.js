@@ -5,6 +5,7 @@ export const CarsContext = React.createContext({
   cars: [],
   isLoading: null,
   // handleAddCar: () => {},
+  // handleEditCar: () => {},
   deleteCar: () => {},
 });
 
@@ -45,6 +46,7 @@ const CarsProvider = ({ children }) => {
         cars,
         isLoading,
         // handleAddCar,
+        // handleEditCar,
         deleteCar,
       }}
     >
