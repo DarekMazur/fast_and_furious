@@ -1,13 +1,12 @@
 import CarsList from '../Components/organisms/CarsList/CarsList';
-import Footer from '../Components/organisms/Footer/Footer';
-import Header from '../Components/organisms/Header/Header';
+import MainTemplate from '../Components/templates/MainTemplate/MainTemplate';
+import Modal from '../Components/templates/Modal/Modal';
 
 const Root = () => (
-  <>
-    <Header />
+  <MainTemplate>
     <CarsList />
-    <Footer />
-  </>
+    <Modal />
+  </MainTemplate>
 );
 
 export default Root;
