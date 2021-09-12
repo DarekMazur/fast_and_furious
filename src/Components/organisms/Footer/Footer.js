@@ -1,14 +1,14 @@
 import githubIcon from '../../../assets/svg/github.svg';
 
 const Footer = () => (
-  <foote>
+  <footer>
     <p>
       <a href="https://github.com/DarekMazur">
         <img src={githubIcon} alt="GitHub" />
       </a>
     </p>
     <p>Darek Mazur &copy; {new Date().getFullYear()}</p>
-  </foote>
+  </footer>
 );
 
 export default Footer;
