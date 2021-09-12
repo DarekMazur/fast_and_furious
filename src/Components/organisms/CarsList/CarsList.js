@@ -1,50 +1,19 @@
-import { useState, useEffect } from 'react';
-import { carsArray as carsData } from '../../../utils/data/cars';
+import { useContext } from 'react';
+import { CarsContext } from '../../../Views/Root';
 import Button from '../../atoms/IconButton/IconButton';
 import CarsListItem from '../../molecules/CarsListItem/CarsListItem';
 
 const CarsList = () => {
-  const mockAPI = (success) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (carsData) {
-          resolve([...carsData]);
-        } else {
-          reject({ message: 'Error' });
-        }
-      }, 800);
-    });
-  };
-
-  const [cars, setCars] = useState([]);
-  const [isLoading, setLoadingState] = useState([]);
-
-  useEffect(() => {
-    setLoadingState(true);
-    mockAPI()
-      .then((data) => {
-        setLoadingState(false);
-        setCars(data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  const deleteCar = (id) => {
-    const filterdCars = cars.filter((cars) => cars.id !== id);
-    setCars(filterdCars);
-  };
+  const context = useContext(CarsContext);
 
   return (
     <>
-      <h2>{isLoading ? 'Loading...' : null}</h2>
+      <h2>{context.isLoading ? 'Loading...' : null}</h2>
       <ul>
-        {/* <li>
-          <h3>Mark</h3> <h3>Model</h3> <h3>Year</h3>
-        </li> */}
-        {cars.map((carsDetails) => (
-          <CarsListItem key={carsDetails.id} deleteCar={deleteCar} carsDetails={carsDetails} />
+        {context.cars.map((carsDetails) => (
+          <CarsListItem key={carsDetails.id} deleteCar={context.deleteCar} carsDetails={carsDetails} />
         ))}
-        {isLoading ? null : <Button buttonType="add" />}
+        {context.isLoading ? null : <Button buttonType="add" />}
       </ul>
     </>
   );
