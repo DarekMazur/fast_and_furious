@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { CarsContext } from '../../../Views/Root';
+import { CarsContext } from '../../../providers/CarsProvider';
 import Button from '../../atoms/IconButton/IconButton';
 import CarsListItem from '../../molecules/CarsListItem/CarsListItem';
 
