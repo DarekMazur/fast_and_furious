@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useContext } from 'react/cjs/react.development';
 import { CarsContext } from '../../../providers/CarsProvider';
 import AddButton from '../../atoms/AddButton/AddButton';
@@ -12,9 +12,15 @@ const initialFormState = {
   id: '',
 };
 
-const Modal = ({ make, model, year }) => {
-  const [formValues, setFormValues] = useState(initialFormState);
+const Modal = () => {
   const { handleAddCar } = useContext(CarsContext);
+  const { editCarItem } = useContext(CarsContext);
+  const { handleEditCar } = useContext(CarsContext);
+  const [formValues, setFormValues] = useState(initialFormState);
+
+  useEffect(() => {
+    setFormValues({ ...editCarItem });
+  }, [editCarItem]);
 
   const handleInputChange = (e) => {
     setFormValues({
@@ -29,14 +35,20 @@ const Modal = ({ make, model, year }) => {
     setFormValues(initialFormState);
   };
 
+  const handleSubmitEdit = (e) => {
+    e.preventDefault();
+    handleEditCar(formValues);
+    setFormValues(initialFormState);
+  };
+
   return (
-    <form onSubmit={handleSubmitCar}>
+    <form onSubmit={editCarItem.length !== 0 ? handleSubmitEdit : handleSubmitCar}>
       <div>
-        <FormField field="make" value={formValues.make} onChange={handleInputChange} />
-        <FormField field="model" value={formValues.model} onChange={handleInputChange} />
-        <FormField field="year" value={formValues.year} onChange={handleInputChange} />
+        <FormField field="make" value={formValues.make} onChange={handleInputChange} isRequired />
+        <FormField field="model" value={formValues.model} onChange={handleInputChange} isRequired />
+        <FormField field="year" value={formValues.year} onChange={handleInputChange} isRequired />
       </div>
-      <AddButton />
+      <AddButton isEdit={editCarItem.length !== 0} />
     </form>
   );
 };

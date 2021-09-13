@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { carsArray as carsData } from '../utils/data/cars';
 
 export const CarsContext = React.createContext({
   cars: [],
+  editCarItem: [],
   filteredCars: [],
   uniqueModels: [],
   isLoading: null,
   handleAddCar: () => {},
-  // handleEditCar: () => {},
+  editCar: () => {},
+  handleEditCar: () => {},
   deleteCar: () => {},
   filterList: () => {},
   sortCars: () => {},
@@ -27,6 +29,7 @@ const CarsProvider = ({ children }) => {
   };
 
   const [cars, setCars] = useState([]);
+  const [editCarItem, setEditCarItem] = useState([]);
   const [filteredCars, setFilteredCars] = useState([]);
   const [checkedModels, setCheckedModels] = useState([]);
   const [isLoading, setLoadingState] = useState([]);
@@ -96,15 +99,30 @@ const CarsProvider = ({ children }) => {
     setCars([newCar, ...cars]);
   };
 
+  const handleEditCar = (values) => {
+    const checkedCar = cars.findIndex((car) => car.id === values.id);
+    if (checkedCar > -1) {
+      cars[checkedCar] = values;
+    }
+    setCars([...cars]);
+  };
+
+  const editCar = (id) => {
+    const checkedCar = cars[cars.findIndex((car) => car.id === id)];
+    setEditCarItem(checkedCar);
+  };
+
   return (
     <CarsContext.Provider
       value={{
         cars,
+        editCarItem,
         filteredCars,
         uniqueModels,
         isLoading,
         handleAddCar,
-        // handleEditCar,
+        editCar,
+        handleEditCar,
         deleteCar,
         filterList,
         sortCars,
