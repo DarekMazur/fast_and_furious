@@ -6,6 +6,7 @@ import Label from '../../atoms/Label/Label';
 const ToolBar = () => {
   const { filterList } = useContext(CarsContext);
   const { uniqueModels } = useContext(CarsContext);
+  const { sortCars } = useContext(CarsContext);
 
   return (
     <div>
@@ -19,9 +20,8 @@ const ToolBar = () => {
           </li>
         ))}
       </ul>
-      <h4>Sort by:</h4>
-      <select name="sort-options" id="sort-options">
-        <option value=" "></option>
+      <select name="sort-options" id="sort-options" onChange={sortCars}>
+        <option value=" ">Sort by:</option>
         <option value="make">Mark</option>
         <option value="model">Model</option>
         <option value="year">Year</option>

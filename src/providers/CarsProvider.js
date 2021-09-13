@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { carsArray as carsData } from '../utils/data/cars';
 
 export const CarsContext = React.createContext({
@@ -10,6 +10,7 @@ export const CarsContext = React.createContext({
   // handleEditCar: () => {},
   deleteCar: () => {},
   filterList: () => {},
+  sortCars: () => {},
 });
 
 const CarsProvider = ({ children }) => {
@@ -75,6 +76,16 @@ const CarsProvider = ({ children }) => {
     setCheckedModels(newCheckedModels);
   };
 
+  const sortCars = (e) => {
+    if (e.target.value !== 'Sort by:') {
+      const sortAttr = e.target.value;
+      const sortedCars = [...cars].sort((a, b) => {
+        return ('' + b[sortAttr]).localeCompare(a[sortAttr]);
+      });
+      setCars(sortedCars);
+    }
+  };
+
   const handleAddCar = (values) => {
     const newCar = {
       make: values.make,
@@ -96,6 +107,7 @@ const CarsProvider = ({ children }) => {
         // handleEditCar,
         deleteCar,
         filterList,
+        sortCars,
       }}
     >
       {children}
