@@ -10,7 +10,7 @@ const CarsList = () => {
     <>
       <h2>{context.isLoading ? 'Loading...' : null}</h2>
       <ul>
-        {context.cars.map((carsDetails) => (
+        {context.filteredCars.map((carsDetails) => (
           <CarsListItem key={carsDetails.id} carsDetails={carsDetails} />
         ))}
         {context.isLoading ? null : <Button buttonType="add" />}

@@ -3,10 +3,13 @@ import { carsArray as carsData } from '../utils/data/cars';
 
 export const CarsContext = React.createContext({
   cars: [],
+  filteredCars: [],
+  uniqueModels: [],
   isLoading: null,
   handleAddCar: () => {},
   // handleEditCar: () => {},
   deleteCar: () => {},
+  filterList: () => {},
 });
 
 const CarsProvider = ({ children }) => {
@@ -23,6 +26,8 @@ const CarsProvider = ({ children }) => {
   };
 
   const [cars, setCars] = useState([]);
+  const [filteredCars, setFilteredCars] = useState([]);
+  const [checkedModels, setCheckedModels] = useState([]);
   const [isLoading, setLoadingState] = useState([]);
 
   useEffect(() => {
@@ -35,9 +40,39 @@ const CarsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    if (checkedModels.length === 0) {
+      setFilteredCars(cars);
+    } else {
+      const newFilteredCars = [];
+      checkedModels.forEach((model) => {
+        newFilteredCars.push(...cars.filter((filteredCars) => filteredCars.model === model));
+      });
+      setFilteredCars(newFilteredCars);
+    }
+  }, [cars, checkedModels]);
+
+  const uniqueModels = Array.from(new Set(cars.map((car) => car.model))).map((model) => {
+    return {
+      model,
+      id: cars.find((car) => car.model === model).id,
+    };
+  });
+
   const deleteCar = (id) => {
-    const filterdCars = cars.filter((cars) => cars.id !== id);
-    setCars(filterdCars);
+    const filteredCars = cars.filter((cars) => cars.id !== id);
+    setCars(filteredCars);
+  };
+
+  const filterList = (model) => {
+    const newCheckedModels = [...checkedModels];
+    if (newCheckedModels.includes(model)) {
+      const index = newCheckedModels.indexOf(model);
+      newCheckedModels.splice(index, 1);
+    } else {
+      newCheckedModels.push(model);
+    }
+    setCheckedModels(newCheckedModels);
   };
 
   const handleAddCar = (values) => {
@@ -54,10 +89,13 @@ const CarsProvider = ({ children }) => {
     <CarsContext.Provider
       value={{
         cars,
+        filteredCars,
+        uniqueModels,
         isLoading,
         handleAddCar,
         // handleEditCar,
         deleteCar,
+        filterList,
       }}
     >
       {children}
