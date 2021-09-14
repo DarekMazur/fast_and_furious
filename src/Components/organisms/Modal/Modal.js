@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
-import { useContext } from 'react/cjs/react.development';
+import { useState, useEffect, useContext } from 'react';
 import { CarsContext } from '../../../providers/CarsProvider';
 import AddButton from '../../atoms/AddButton/AddButton';
 import CloseButton from '../../atoms/CloseButton/CloseButton';
