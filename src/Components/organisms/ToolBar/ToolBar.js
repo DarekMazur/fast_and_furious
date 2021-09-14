@@ -9,12 +9,12 @@ const ToolBar = () => {
   const { sortCars } = useContext(CarsContext);
 
   return (
-    <div>
+    <div className="container-fluid w-25">
       <h3>Tool Bar</h3>
       <h4>Filter</h4>
-      <ul>
+      <ul className="list-group">
         {uniqueModels.map((carsDetails) => (
-          <li key={carsDetails.id}>
+          <li key={carsDetails.id} className="list-group-item border-0">
             <Input type="checkbox" id={carsDetails.model} name={carsDetails.model} onChange={() => filterList(carsDetails.model)} />
             <Label id={carsDetails.model} label={carsDetails.model} />
           </li>

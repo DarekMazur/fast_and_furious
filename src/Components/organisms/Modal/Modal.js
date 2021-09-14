@@ -6,6 +6,8 @@ import AddButton from '../../atoms/AddButton/AddButton';
 import CloseButton from '../../atoms/CloseButton/CloseButton';
 import FormField from '../../molecules/FormField/FromField';
 
+import './Modal.style.scss';
+
 const initialFormState = {
   make: '',
   model: '',
@@ -39,24 +41,31 @@ const Modal = () => {
 
   const handleSubmitEdit = (e) => {
     e.preventDefault();
-    handleModalOpen();
     editCarItem.length = 0;
     handleEditCar(formValues);
     setFormValues(initialFormState);
   };
 
+  const handleCloseModal = () => {
+    setFormValues(initialFormState);
+    editCarItem.length = 0;
+    handleModalOpen();
+  };
+
   return (
-    <form onSubmit={editCarItem.length !== 0 ? handleSubmitEdit : handleSubmitCar}>
-      <div>
-        <FormField field="make" value={formValues.make} onChange={handleInputChange} isRequired />
-        <FormField field="model" value={formValues.model} onChange={handleInputChange} isRequired />
-        <FormField field="year" value={formValues.year} onChange={handleInputChange} isRequired />
-      </div>
-      <div>
-        <AddButton isEdit={editCarItem.length !== 0} />
-        <CloseButton onClick={handleModalOpen} />
-      </div>
-    </form>
+    <div className="modalForm container-fluid justify-content-center p-5">
+      <form onSubmit={editCarItem.length !== 0 ? handleSubmitEdit : handleSubmitCar} className="p-5 bg-light modalForm__form">
+        <div className="d-flex flex-column">
+          <FormField field="make" value={formValues.make} onChange={handleInputChange} isRequired />
+          <FormField field="model" value={formValues.model} onChange={handleInputChange} isRequired />
+          <FormField field="year" value={formValues.year} onChange={handleInputChange} isRequired />
+        </div>
+        <div className="d-flex mt-4">
+          <AddButton isEdit={editCarItem.length !== 0} />
+          <CloseButton onClick={handleCloseModal} />
+        </div>
+      </form>
+    </div>
   );
 };
 

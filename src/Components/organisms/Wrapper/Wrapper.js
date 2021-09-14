@@ -1,5 +1,5 @@
 const Wrapper = ({ children }) => {
-  return <div style={{ display: 'flex' }}>{children}</div>;
+  return <div className="container-fluid d-flex justify-content-between">{children}</div>;
 };
 
 export default Wrapper;

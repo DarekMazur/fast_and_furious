@@ -1,0 +1,18 @@
+.modalForm {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  background: rgba(200, 238, 253, 0.5);
+  backdrop-filter: blur(0.2rem);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  &--open {
+    display: flex;
+  }
+
+  &__form {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+}

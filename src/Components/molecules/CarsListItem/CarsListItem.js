@@ -7,8 +7,11 @@ const CarsListItem = ({ carsDetails: { make, model, year, id } }) => {
   const { editCar } = useContext(CarsContext);
 
   return (
-    <li>
-      {make} {model} ({year}) <Button buttonType="edit" onClick={() => editCar(id)} /> <Button onClick={() => deleteCar(id)} buttonType="del" />
+    <li className="list-group-item d-flex align-items-center justify-content-between">
+      {make} {model} ({year}){' '}
+      <span>
+        <Button buttonType="edit" onClick={() => editCar(id)} /> <Button onClick={() => deleteCar(id)} buttonType="del" />
+      </span>
     </li>
   );
 };

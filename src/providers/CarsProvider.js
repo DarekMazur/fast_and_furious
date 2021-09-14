@@ -60,7 +60,9 @@ const CarsProvider = ({ children }) => {
   }, [cars, checkedModels]);
 
   useEffect(() => {
-    console.log(isModalOpen);
+    isModalOpen
+      ? document.querySelector('.modalForm').classList.add(`modalForm--open`)
+      : document.querySelector('.modalForm').classList.remove(`modalForm--open`);
   }, [isModalOpen]);
 
   const uniqueModels = Array.from(new Set(cars.map((car) => car.model))).map((model) => {

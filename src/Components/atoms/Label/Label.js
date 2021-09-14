@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 
-const Label = ({ id, label }) => <label htmlFor={id}>{label}</label>;
+const Label = ({ id, label, className }) => (
+  <label htmlFor={id} className={className}>
+    {label}
+  </label>
+);
 
 Label.propTypes = {
   id: PropTypes.string.isRequired,
