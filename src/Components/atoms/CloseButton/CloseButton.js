@@ -1,5 +1,7 @@
+import { Button } from 'react-bootstrap';
+
 const CloseButton = (props) => {
-  return <button {...props}>Close</button>;
+  return <Button {...props}>Close</Button>;
 };
 
 export default CloseButton;

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
-const AddButton = ({ isEdit }) => <button type="submit">{isEdit ? 'Accept changes' : 'Add new car'}</button>;
+const AddButton = ({ isEdit }) => <Button type="submit">{isEdit ? 'Accept changes' : 'Add new car'}</Button>;
 
 AddButton.propTypes = {
   isEdit: PropTypes.bool,
