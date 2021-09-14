@@ -2,7 +2,7 @@ import bin from '../../../assets/svg/bin.svg';
 import edit from '../../../assets/svg/edit.svg';
 import add from '../../../assets/svg/add.svg';
 
-const Button = ({ onClick, buttonType }) => (
+const IconButton = ({ onClick, buttonType }) => (
   <button onClick={onClick} style={{ width: '40px', height: '40px' }}>
     {buttonType === 'del' || buttonType === 'edit' ? (
       buttonType === 'del' ? (
@@ -16,4 +16,4 @@ const Button = ({ onClick, buttonType }) => (
   </button>
 );
 
-export default Button;
+export default IconButton;

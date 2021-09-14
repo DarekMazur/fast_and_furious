@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useContext } from 'react/cjs/react.development';
 import { CarsContext } from '../../../providers/CarsProvider';
 import AddButton from '../../atoms/AddButton/AddButton';
+import CloseButton from '../../atoms/CloseButton/CloseButton';
 import FormField from '../../molecules/FormField/FromField';
 
 const initialFormState = {
@@ -16,6 +17,7 @@ const Modal = () => {
   const { handleAddCar } = useContext(CarsContext);
   const { editCarItem } = useContext(CarsContext);
   const { handleEditCar } = useContext(CarsContext);
+  const { handleModalOpen } = useContext(CarsContext);
   const [formValues, setFormValues] = useState(initialFormState);
 
   useEffect(() => {
@@ -37,6 +39,8 @@ const Modal = () => {
 
   const handleSubmitEdit = (e) => {
     e.preventDefault();
+    handleModalOpen();
+    editCarItem.length = 0;
     handleEditCar(formValues);
     setFormValues(initialFormState);
   };
@@ -48,7 +52,10 @@ const Modal = () => {
         <FormField field="model" value={formValues.model} onChange={handleInputChange} isRequired />
         <FormField field="year" value={formValues.year} onChange={handleInputChange} isRequired />
       </div>
-      <AddButton isEdit={editCarItem.length !== 0} />
+      <div>
+        <AddButton isEdit={editCarItem.length !== 0} />
+        <CloseButton onClick={handleModalOpen} />
+      </div>
     </form>
   );
 };

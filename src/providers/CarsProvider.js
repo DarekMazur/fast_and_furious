@@ -7,12 +7,14 @@ export const CarsContext = React.createContext({
   filteredCars: [],
   uniqueModels: [],
   isLoading: null,
+  isModalOpen: null,
   handleAddCar: () => {},
   editCar: () => {},
   handleEditCar: () => {},
   deleteCar: () => {},
   filterList: () => {},
   sortCars: () => {},
+  handleModalOpen: () => {},
 });
 
 const CarsProvider = ({ children }) => {
@@ -33,6 +35,7 @@ const CarsProvider = ({ children }) => {
   const [filteredCars, setFilteredCars] = useState([]);
   const [checkedModels, setCheckedModels] = useState([]);
   const [isLoading, setLoadingState] = useState([]);
+  const [isModalOpen, setModalState] = useState(false);
 
   useEffect(() => {
     setLoadingState(true);
@@ -56,12 +59,21 @@ const CarsProvider = ({ children }) => {
     }
   }, [cars, checkedModels]);
 
+  useEffect(() => {
+    console.log(isModalOpen);
+  }, [isModalOpen]);
+
   const uniqueModels = Array.from(new Set(cars.map((car) => car.model))).map((model) => {
     return {
       model,
       id: cars.find((car) => car.model === model).id,
     };
   });
+
+  const handleModalOpen = () => {
+    const prevModalState = isModalOpen;
+    setModalState(!prevModalState);
+  };
 
   const deleteCar = (id) => {
     const filteredCars = cars.filter((cars) => cars.id !== id);
@@ -109,6 +121,7 @@ const CarsProvider = ({ children }) => {
 
   const editCar = (id) => {
     const checkedCar = cars[cars.findIndex((car) => car.id === id)];
+    handleModalOpen();
     setEditCarItem(checkedCar);
   };
 
@@ -120,12 +133,14 @@ const CarsProvider = ({ children }) => {
         filteredCars,
         uniqueModels,
         isLoading,
+        isModalOpen,
         handleAddCar,
         editCar,
         handleEditCar,
         deleteCar,
         filterList,
         sortCars,
+        handleModalOpen,
       }}
     >
       {children}

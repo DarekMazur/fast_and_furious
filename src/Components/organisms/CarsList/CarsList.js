@@ -1,10 +1,15 @@
 import { useContext } from 'react';
 import { CarsContext } from '../../../providers/CarsProvider';
-import Button from '../../atoms/IconButton/IconButton';
+import IconButton from '../../atoms/IconButton/IconButton';
 import CarsListItem from '../../molecules/CarsListItem/CarsListItem';
 
 const CarsList = () => {
   const context = useContext(CarsContext);
+  const { handleModalOpen } = useContext(CarsContext);
+
+  const handleOnClick = () => {
+    handleModalOpen();
+  };
 
   return (
     <>
@@ -13,7 +18,7 @@ const CarsList = () => {
         {context.filteredCars.map((carsDetails) => (
           <CarsListItem key={carsDetails.id} carsDetails={carsDetails} />
         ))}
-        {context.isLoading ? null : <Button buttonType="add" />}
+        {context.isLoading ? null : <IconButton buttonType="add" onClick={handleOnClick} />}
       </ul>
     </>
   );
