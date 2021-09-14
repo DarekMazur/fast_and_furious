@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+<p align="center">
+    <img alt="Fast and Organized Logo" src="src/assets/svg/FaO_logo.svg" width="200" />
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  Fast and Organized 
+</h1>
 
-## Available Scripts
+## Version: 1.0.0
 
-In the project directory, you can run:
+Live demo: [app]
 
-### `npm start`
+## 💨 About app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Fast and Organized is organized car list created using create-react-app.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Fetures:
+* add new car
+* edit existing cars
+* delete cars from list
+* sort by mark, model or year
+* filter by model
 
-### `npm test`
+:heavy_exclamation_mark: This is simple frontend app with no backend - all data is mocked. Please remember that all cars you will add will be deleted after reload!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Quick start
 
-### `npm run build`
+1.  **Requirement**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    - npm (v7.16.0)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.  **Installation**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    To install application navigate to app's directory and use npm command
 
-### `npm run eject`
+    ```shell
+    cd app-main-dir/
+    npm install
+    npm run build
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3.  **Developer mode**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    You can run app in developer mode by using command
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    ```shell
+    npm start
+    ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    Application will run on port 3000 (localhost:3000)
+    
+4.  **Tech stack:**
+* React.js
+* Bootstrap 5
+* HTML (JSX)
+* CSS (SCSS)
 
-## Learn More
+5.  **What's inside?**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+A quick look at the top-level files and directories in project.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    .
+    ├── public
+    ├── src
+    ├── package-lock.json
+    ├── package.json
+    ├── .eslintrc
+    ├── .prettierrc
+    └── README.md
 
-### Code Splitting
+- **`/public`**: This directory will contain index.html, manifest and bundled code
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
 
-### Analyzing the Bundle Size
+- **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
-### Making a Progressive Web App
+- **`README.md`**: A text file containing useful reference information about your project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **`.eslintrc`**: linter (eslint) configuration file
 
-### Advanced Configuration
+- **`.prettierrc`**: code formatter (prettier) configuration file
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[app]: https://angry-bhabha-44a52d.netlify.app/
