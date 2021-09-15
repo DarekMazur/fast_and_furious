@@ -1,10 +1,8 @@
 import { useContext } from 'react';
 import { CarsContext } from '../../../providers/CarsProvider';
-import Input from '../../atoms/Input/Input';
-import Label from '../../atoms/Label/Label';
+import ToolbarListItem from '../../molecules/ToolbarListItem/ToolbarListItem';
 
 const ToolBar = () => {
-  const { filterList } = useContext(CarsContext);
   const { uniqueModels } = useContext(CarsContext);
   const { sortCars } = useContext(CarsContext);
 
@@ -14,10 +12,7 @@ const ToolBar = () => {
       <h4>Filter</h4>
       <ul className="list-group">
         {uniqueModels.map((carsDetails) => (
-          <li key={carsDetails.id} className="list-group-item border-0">
-            <Input type="checkbox" id={carsDetails.model} name={carsDetails.model} onChange={() => filterList(carsDetails.model)} />
-            <Label id={carsDetails.model} label={carsDetails.model} />
-          </li>
+          <ToolbarListItem id={carsDetails.id} model={carsDetails.model} />
         ))}
       </ul>
       <select name="sort-options" id="sort-options" onChange={sortCars}>
