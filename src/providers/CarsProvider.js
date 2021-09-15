@@ -94,7 +94,7 @@ const CarsProvider = ({ children }) => {
   };
 
   const sortCars = (e) => {
-    if (e.target.value !== 'Sort by:') {
+    if (e.target.value !== 'Choose an option:') {
       const sortAttr = e.target.value;
       const sortedCars = [...cars].sort((a, b) => {
         return ('' + b[sortAttr]).localeCompare(a[sortAttr]);
