@@ -57,7 +57,7 @@ const Modal = () => {
         <div className="d-flex flex-column">
           <FormField field="make" value={formValues.make} onChange={handleInputChange} isRequired />
           <FormField field="model" value={formValues.model} onChange={handleInputChange} isRequired />
-          <FormField field="year" value={formValues.year} onChange={handleInputChange} isRequired />
+          <FormField field="year" value={formValues.year} type="number" onChange={handleInputChange} isRequired />
         </div>
         <div className="d-flex mt-4">
           <AddButton isEdit={editCarItem.length !== 0} />
